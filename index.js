@@ -2,7 +2,8 @@ const line = require("@line/bot-sdk");
 const express = require("express");
 const axios = require("axios");
 
-const { isoToThaiDate } = require("./lib/dateIsoToThai")
+const { isoToThaiDate } = require("./lib/dateIsoToThai");
+const { loading } = require("./api/loading");
 
 require("dotenv").config();
 
@@ -40,6 +41,7 @@ async function handleEvent(event) {
     const apiUrl = `${process.env.GAS_URL}?lineUserId=${userId}`;
 
     try {
+      await loading(userId);
       const response = await axios.get(apiUrl);
       const data = response.data;
 
