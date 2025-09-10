@@ -392,6 +392,21 @@ async function handleEvent(event) {
                 {
                   "type": "separator",
                   "margin": "md"
+                },
+                {
+                  "type": "button",
+                  "action": {
+                    "type": "message",
+                    "label": "ขอหนังสือรับรองการเป็นสมาชิก",
+                    "text": "ขอหนังสือรับรองการเป็นสมาชิก"
+                  },
+                  "style": "primary",
+                  "height": "sm",
+                  "margin": "lg"
+                },
+                {
+                  "type": "separator",
+                  "margin": "lg"
                 }
               ]
             },
@@ -423,6 +438,11 @@ async function handleEvent(event) {
         text: "เกิดข้อผิดพลาดในการดึงข้อมูล กรุณาลองใหม่อีกครั้ง",
       });
     }
+  } else if (userMessage === "ขอหนังสือรับรองการเป็นสมาชิก") {
+    await client.replyMessage(event.replyToken, {
+        type: "text",
+        text: "เจ้าหน้าที่สมาคมจะส่งไฟล์ให้ใน 1-2 วันทำการ ขอบคุณครับ",
+    });
   }
 }
 
